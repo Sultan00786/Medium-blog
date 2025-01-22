@@ -1,6 +1,5 @@
-import React from "react";
-import { Avatar } from "./blog/BlogCard";
 import { Link } from "react-router-dom";
+import { Avatar } from "./blog/BlogCard";
 
 function NavBar() {
    return (
