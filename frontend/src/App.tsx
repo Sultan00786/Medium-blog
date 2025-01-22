@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Blog from "./pages/Blog.tsx";
 import Signin from "./pages/Signin";
 import Singup from "./pages/Singup";
@@ -6,6 +6,9 @@ import Blogs from "./pages/Blogs.tsx";
 import Publish from "./pages/Publish.tsx";
 
 function App() {
+   const router = useNavigate();
+
+   router("/signin");
    return (
       <>
          <Routes>
