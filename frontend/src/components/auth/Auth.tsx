@@ -14,10 +14,7 @@ interface FormLabelType {
    onchange: onChangeType;
 }
 
-type onChangeType = (
-   event: ChangeEvent<HTMLInputElement>,
-   s: string
-) => void;
+type onChangeType = (event: ChangeEvent<HTMLInputElement>, s: string) => void;
 
 function Auth({ type }: { type: "Sign up" | "Sign in" }) {
    const navigate = useNavigate();
@@ -35,15 +32,15 @@ function Auth({ type }: { type: "Sign up" | "Sign in" }) {
       });
    };
 
-   const handlerSubmit: FormEventHandler<
-      HTMLFormElement
-   > = async (event) => {
+   const handlerSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
       event.preventDefault();
       try {
          let token;
          if (type === "Sign up")
             token = await axios.post(CREATE_NEW_USER, singUpIP);
          else token = await axios.post(LOGIN_USER, singUpIP);
+
+         console.log(token);
 
          if (token.data.jwt) {
             localStorage.setItem("token", token.data.jwt);
@@ -68,11 +65,7 @@ function Auth({ type }: { type: "Sign up" | "Sign in" }) {
                   : "Continue with your journey!! "}
                <span
                   onClick={() =>
-                     navigate(
-                        type === "Sign up"
-                           ? "/signin"
-                           : "/signup"
-                     )
+                     navigate(type === "Sign up" ? "/signin" : "/signup")
                   }
                   className=" underline hover:text-blue-400 cursor-pointer"
                >
@@ -127,9 +120,7 @@ export const FormLabel = ({
       <div>
          <label className="block mb-2 mt-5 font-medium text-gray-900">
             {label}
-            {name != "name" && (
-               <sup className=" text-red-600"> *</sup>
-            )}
+            {name != "name" && <sup className=" text-red-600"> *</sup>}
          </label>
          <input
             type={type || "text"}

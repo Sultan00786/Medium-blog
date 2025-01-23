@@ -4,14 +4,14 @@ import Signin from "./pages/Signin";
 import Singup from "./pages/Singup";
 import Blogs from "./pages/Blogs.tsx";
 import Publish from "./pages/Publish.tsx";
+import { useEffect } from "react";
+import Root from "./pages/Root.tsx";
 
 function App() {
-   const router = useNavigate();
-
-   router("/signin");
    return (
       <>
          <Routes>
+            <Route path="/" element={<Root />} />
             <Route path="/signup" element={<Singup />} />
             <Route path="/signin" element={<Signin />} />
             <Route path="/blog/:id" element={<Blog />} />
